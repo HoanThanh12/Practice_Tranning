@@ -12,7 +12,7 @@
 
 # Question 3: Hàm này dùng để làm gì, và nó có cần thiết hay không? Tại sao?
 
-![Question3](../../Hinh/QS3.png)
+![Question3](../Practice%201/image_question/QS3.png)
 
 - Hàm này bản chất của nó là 1 Contructor
 - Dùng để tiện gọi và thao tác với những tham số này
@@ -21,7 +21,7 @@
 
 # Question 4: Có cần thiết phải lúc nào cũng xài hết function này hay không và tại sao?
 
-![Question3](../../Hinh/QS4.png)
+![Question3](../Practice%201/image_question/QS4.png)
 
 - Có, vì tất cả hàm này đều được sử dụng trong view của practice 1, và có vẻ như được thiết kế theo rule của framework
 
@@ -47,7 +47,7 @@
 
 # Question 7: Dòng 110 headTitle: dấu "|" dùng để làm gì. Có cần thiết khi thêm | ở phía trước hay không và nếu không thêm thì chuyện gì sẽ xảy ra? Dòng 112: giải thích các số ở trong SetConfig. Dòng 118 --> 125: giải thích keyfied, format dùng để làm gì? Nếu không muốn cho user update cell, add data khi insert dòng mới thì làm như thế nào? Làm thế nào chỉ cho phép cell đó được nhập ký tự hoặc là số?
 
-![Question3](../../Hinh/QS7.png)
+![Question3](../Practice%201/image_question/QS7.png)
 
 - Dòng 110: dấu "|" dùng đế kết hợp tên các cột khi khởi tạo bảng trong hàm InitHeaders. Cần thiết phải thêm dấu này ở phía trước vì có 1 cột status đầu tiên là hidden nên cột tên Del phải ở vị trí 2 trên header, nếu k thì cột tên Del sẽ được gán cho cột dữ liệu đầu tiên và sẽ bị ẩn đi.
 - Dòng 112: Define các thông số thuộc tính khởi tạo cho header
