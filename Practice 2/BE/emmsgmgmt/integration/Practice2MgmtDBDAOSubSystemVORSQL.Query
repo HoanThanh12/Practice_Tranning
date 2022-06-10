@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sqls>
+	<querys>
+		<query name="Practice2MgmtDBDAOSubSystemVORSQL">
+			<desc><![CDATA[DESC Enter..]]></desc>
+			<sql><![CDATA[
+select distinct(ownr_sub_sys_cd)
+from com_intg_cd			]]></sql>
+			<params>
+			</params>
+		</query>
+	</querys>
+</sqls>
