@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sqls>
+	<querys>
+		<query name="Practice3MgmtDBDAOSummarySearchTradeRSQL">
+			<desc><![CDATA[DESC Enter..]]></desc>
+			<sql><![CDATA[
+SELECT 
+	DISTINCT(MODI_COST_CTR_CD),
+	JO_CRR_CD,
+	RLANE_CD
+FROM JOO_STL_TGT 
+WHERE RLANE_CD = @[rlane_cd]
+	AND JO_CRR_CD IN (
+	#foreach($key IN ${obj_list_no}) #if($velocityCount < $obj_list_no.size()) '$key', #else '$key' #end #end
+)			]]></sql>
+			<params>
+				<param name="rlane_cd" type="12" value="" out="N"/>
+			</params>
+		</query>
+	</querys>
+</sqls>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sqls>
+	<querys>
+		<query name="Practice3MgmtDBDAOSummarySearchLaneRSQL">
+			<desc><![CDATA[]]></desc>
+			<sql><![CDATA[
+select 
+	DISTINCT(RLANE_CD)
+from JOO_STL_TGT
+where JO_CRR_CD IN (
+	#foreach($key IN ${obj_list_no}) #if($velocityCount < $obj_list_no.size()) '$key', #else '$key' #end #end
+)			]]></sql>
+			<params>
+			</params>
+		</query>
+	</querys>
+</sqls>
