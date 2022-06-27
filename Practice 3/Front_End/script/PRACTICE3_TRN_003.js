@@ -119,10 +119,8 @@ function loadPage(){
 		initSheet(sheetObjects[i], i + 1);
 		ComEndConfigSheet(sheetObjects[i]);
 	}
-	
-
 	doActionIBSheet(sheetObjects[0], document.form, IBSEARCH);
-	doActionIBSheet(sheetObjects[1], document.form, IBSEARCH);	
+
 }
 
 /** To put sheet objects in global variable "sheetObjects" */
@@ -305,7 +303,6 @@ function checkOverThreeMonth(){
 	var formObj = document.form;
 	var fromDate = formObj.acct_yrmon_from.value.replaceStr("-","") + "01";
 	var toDate   = formObj.acct_yrmon_to.value.replaceStr("-","") + "01";
-	console.log(ComGetDaysBetween(fromDate, toDate));
 	// Get sum day in 2 months
 	if (ComGetDaysBetween(fromDate, toDate) > 88)
 		return false;
@@ -469,6 +466,14 @@ function tab1_OnChange(tabObj, nItem)
 		  }
 		}
 	//------------------------------------------------------//
+	if (nItem==1 && !sheetObjects[1].IsDataModified()){
+			alert("We will load the data in tab1. Because tab1 has no data");
+			document.form.f_cmd.value = SEARCH03;
+			var xml = sheetObjects[1].GetSearchData("PRACTICE3_TRN_003GS.do", FormQueryString(document.form));
+			sheetObjects[1].LoadSearchData(xml);
+				
+	}
+
 	beforetab=nItem;
     resizeSheet();
 } 
@@ -522,16 +527,6 @@ function sheet1_OnDblClick(sheetObj, Row, Col, CellX, CellY, CellW, CellH){
 	}
 	else{
 		selectRowToOtherSheet(sheetObj, sheetObjects[1],Row,0,2);
-		for(var i = sheetObj.HeaderRows();i<=sheetObj.LastRow();i++){
-			if(sheetObj.GetCellValue(i,"rlane_cd") == sheetObjects[1].GetCellValue(Row,"rlane_cd")){
-				sheetObjects[1].SetRowBackColor(Row,"#ffcc99");
-				sheetObj.SetRowBackColor(i,"#fffff");
-			}else{
-				sheetObjects[1].SetRowBackColor(i,"#fffff");
-				sheetObj.SetRowBackColor(i,"#fffff");
-			}
-			
-		}
 		tab1.SetSelectedIndex(1);
 	}
 }
