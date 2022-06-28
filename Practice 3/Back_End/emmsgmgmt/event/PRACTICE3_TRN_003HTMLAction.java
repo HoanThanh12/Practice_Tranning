@@ -85,6 +85,15 @@ public class PRACTICE3_TRN_003HTMLAction extends HTMLActionSupport {
 			detailVO.setTrdCd(JSPUtil.getParameter(request, "s_trade_cd", ""));
 			event.setDetailVO(detailVO);
 		}
+		else if (command.isCommand(FormCommand.COMMAND01)){
+			DetailVO detailVO = new DetailVO();
+			detailVO.setAcctYrmonFr(JSPUtil.getParameter(request, "acct_yrmon_from", ""));
+			detailVO.setAcctYrmonTo(JSPUtil.getParameter(request, "acct_yrmon_to", ""));
+			detailVO.setJoCrrCd(JSPUtil.getParameter(request, "s_jo_crr_cd", ""));
+			detailVO.setRlaneCd(JSPUtil.getParameter(request, "s_rlane_cd", ""));
+			detailVO.setTrdCd(JSPUtil.getParameter(request, "s_trade_cd", ""));
+			event.setDetailVO(detailVO);
+		}
 		return  event;
 	}
 	

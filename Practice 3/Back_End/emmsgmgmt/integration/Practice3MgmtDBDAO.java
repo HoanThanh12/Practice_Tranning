@@ -249,4 +249,39 @@ public class Practice3MgmtDBDAO extends DBDAOSupport{
 		}
 		return list;
  	}
+	
+	public DBRowSet searchDetailsRSForExcel(DetailVO detailVO) throws DAOException {
+		DBRowSet dbRowset = null;
+		//query parameter
+		Map<String, Object> param = new HashMap<String, Object>();
+		//velocity parameter
+		Map<String, Object> velParam = new HashMap<String, Object>();
+		try{
+			if(detailVO != null){
+				Map<String, String> mapVO = detailVO .getColumnValues();
+				List<String> obj_list_no = new ArrayList<>();
+				if (null!=detailVO.getJoCrrCd()){
+					String[] partners = detailVO.getJoCrrCd().split(",");
+					for(int i = 0; i < partners.length; i++){
+						obj_list_no.add(partners[i]);
+					}
+					param.putAll(mapVO);
+					param.put("obj_list_no", obj_list_no);
+					
+					velParam.putAll(mapVO);
+					velParam.put("obj_list_no", obj_list_no);
+				}
+			}
+			dbRowset = new SQLExecuter("").executeQuery((ISQLTemplate)new Practice3MgmtDBDAODetailVORSQL(), param, velParam);
+		} catch(SQLException se) {
+			log.error(se.getMessage(),se);
+			throw new DAOException(new ErrorHandler(se).getMessage());
+		} catch(Exception ex) {
+			log.error(ex.getMessage(),ex);
+			throw new DAOException(new ErrorHandler(ex).getMessage());
+		}
+		return dbRowset;
+	}
+
+	
 }

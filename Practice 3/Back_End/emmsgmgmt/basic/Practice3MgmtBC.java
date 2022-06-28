@@ -81,4 +81,7 @@ public interface Practice3MgmtBC {
 	 */
 	public List<DetailVO> searchDetailMgmt(DetailVO detailVO)
 			throws EventException;
+	
+	
+	public List searchDetailsRSForExcel(DetailVO detailVO) throws EventException;
 }

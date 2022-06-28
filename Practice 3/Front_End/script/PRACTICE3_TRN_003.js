@@ -80,6 +80,9 @@ function processButtonClick() {
 	        case "btn_DownExcel":
             	doActionIBSheet(sheetObject1,formObject,IBDOWNEXCEL);
             	break;
+	        case "btn_DownExcel2":
+	        	doActionIBSheet(sheetObject2,formObject,IBDOWNEXCEL);
+	        	break;
         }
     }
     catch(e) {
@@ -217,15 +220,36 @@ function doActionIBSheet(sheetObj,formObj,sAction) {
 			}
 			break;
 		case IBDOWNEXCEL:
-			if(sheetObj.RowCount() < 1){
-				ComShowCodeMessage("COM132501");
+			ComOpenWait(true);
+			if(sheetObj.id=="sheet1"){
+				
+				if(sheetObj.RowCount() < 1){
+					ComShowCodeMessage("COM132501");
+						
+				}
+				else{
+					sheetObjects[0].Down2ExcelBuffer(true);
+					sheetObjects[0].Down2Excel({FileName:'Excel',SheetName:'Summary',DownCols: makeHiddenSkipCol(sheetObjects[0]), SheetDesign:1, Merge:1});					
+					sheetObjects[1].Down2Excel({SheetName:'Details',DownCols: makeHiddenSkipCol(sheetObjects[1]), SheetDesign:1, Merge:1});
+					sheetObjects[0].Down2ExcelBuffer(false);	
+					ComOpenWait(false);
+				}
 			}
-			else{
-				sheetObjects[0].Down2ExcelBuffer(true);
-				sheetObjects[0].Down2Excel({FileName:'Excel',SheetName:'Summary',DownCols: makeHiddenSkipCol(sheetObjects[0]), SheetDesign:1, Merge:1});
-				sheetObjects[1].Down2Excel({FileName:'Excel',SheetName:'Details',DownCols: makeHiddenSkipCol(sheetObjects[1]), SheetDesign:1, Merge:1});
-				sheetObjects[0].Down2ExcelBuffer(false);
-			}
+			else {	
+				formObj.f_cmd.value = COMMAND01;
+				let param ={
+						URL:"/opuscntr/PRACTICE3_TRN_003DL.do",
+						ExtendParam:FormQueryString(formObj),
+						FileName:"Details.xls",
+						DownCols: makeHiddenSkipCol(sheetObj),
+						Merge:1,
+						SheetName:"Details",
+						SheetDesign:1,
+						KeyFieldMark:0
+				};			
+				sheetObj.DirectDown2Excel(param);
+				ComOpenWait(false);
+			}	
 			break;
 	}
 }
@@ -467,16 +491,20 @@ function tab1_OnChange(tabObj, nItem)
 		}
 	//------------------------------------------------------//
 	if (nItem==1 && !sheetObjects[1].IsDataModified()){
-			alert("We will load the data in tab1. Because tab1 has no data");
-			document.form.f_cmd.value = SEARCH03;
-			var xml = sheetObjects[1].GetSearchData("PRACTICE3_TRN_003GS.do", FormQueryString(document.form));
-			sheetObjects[1].LoadSearchData(xml);
+			alert("We will load the data in Detail. Because Detail has no data");
+			searchDetails();
 				
 	}
 
 	beforetab=nItem;
     resizeSheet();
 } 
+/** Search Details */
+function searchDetails(){
+	document.form.f_cmd.value = SEARCH03;
+	var xml = sheetObjects[1].GetSearchData("PRACTICE3_TRN_003GS.do", FormQueryString(document.form));
+	sheetObjects[1].LoadSearchData(xml);
+}
 
 /** Find position info */
 function selectRowToOtherSheet(sheetFrom, sheetTo, Row, sFr, sTo){

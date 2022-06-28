@@ -51,9 +51,30 @@ public class TrainingSC extends ServiceCommandSupport{
 			else if (e.getFormCommand().isCommand(FormCommand.SEARCH03)){
 				eventResponse = searchDetail(e);
 			}
+			else if (e.getFormCommand().isCommand(FormCommand.COMMAND01)){
+				// direct down2excel
+				eventResponse = searchDetailsRSForExcel(e); 
+			}
 		}
 		return eventResponse;
 	}
+	
+	private EventResponse searchDetailsRSForExcel(Event e) throws EventException {
+		// TODO Auto-generated method stub
+		GeneralEventResponse eventResponse = new GeneralEventResponse();
+		Practice3Trn003Event event = (Practice3Trn003Event)e;
+		Practice3MgmtBC command = new Practice3MgmtBCImpl();
+		try{
+			
+			eventResponse.setRsVoList(command.searchDetailsRSForExcel(event.getDetailVO()));
+		}catch(EventException ex){
+			throw new EventException(new ErrorHandler(ex).getMessage(),ex);
+		}catch(Exception ex){
+			throw new EventException(new ErrorHandler(ex).getMessage(),ex);
+		}
+		return eventResponse;
+	}
+	
 	/**
 	 * [SearchSummary]
 	 * @param e Event
@@ -121,7 +142,6 @@ public class TrainingSC extends ServiceCommandSupport{
 					}	
 				}
 			}
-			System.out.println(list);
 			eventResponse.setETCData("partners", partnerBuilder.toString());
 		}catch(EventException ex){
 			throw new EventException(new ErrorHandler(ex).getMessage(),ex);
@@ -152,7 +172,6 @@ public class TrainingSC extends ServiceCommandSupport{
 				}
 			}
 			eventResponse.setETCData("lanes",laneBuilder.toString());
-			System.out.println(list);
 		}catch(EventException ex){
 			throw new EventException(new ErrorHandler(ex).getMessage(),ex);
 		}catch(Exception ex){
