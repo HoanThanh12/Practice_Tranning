@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sqls>
+	<querys>
+		<query name="CarrierMgmtDBDAORevLaneVORSQL">
+			<desc><![CDATA[DESC Enter..]]></desc>
+			<sql><![CDATA[
+select 
+	vsl_slan_cd,
+	rlane_nm,
+	rlane_cd
+from mdm_rev_lane
+where 1 = 1
+#if (${vsl_slan_cd} != '')
+and vsl_slan_cd like '%'||UPPER(@[vsl_slan_cd])||'%'
+#end
+order by vsl_slan_cd asc			]]></sql>
+			<params>
+				<param name="vsl_slan_cd" type="12" value="a" out="N"/>
+			</params>
+		</query>
+	</querys>
+</sqls>
