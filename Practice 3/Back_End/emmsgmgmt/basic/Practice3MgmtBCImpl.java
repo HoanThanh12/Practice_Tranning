@@ -143,7 +143,13 @@ public class Practice3MgmtBCImpl extends BasicCommandSupport implements Practice
 			throw new EventException(new ErrorHandler(ex).getMessage(), ex);
 		}
 	}
-
+	/**
+	 * [searchDetailsRSForExcel] to get a list.<br>
+	 * 
+	 * @param DetailVO	detailVO
+	 * @return List
+	 * @exception EventException
+	 */
 	@Override
 	public List searchDetailsRSForExcel(DetailVO detailVO)
 			throws EventException {
@@ -169,8 +175,6 @@ public class Practice3MgmtBCImpl extends BasicCommandSupport implements Practice
 			    mp.put("apro_flg",rs.getString("APRO_FLG")); 
 			    li.add(mp); 
 			}
-//			Search in DBDAO
-			System.out.println(li);
 			return li;
 		} catch(DAOException ex) {
 			throw new EventException(new ErrorHandler(ex).getMessage(),ex);

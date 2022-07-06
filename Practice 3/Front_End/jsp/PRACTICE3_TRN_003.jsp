@@ -29,9 +29,9 @@
 
 <%
 	Practice3Trn003Event event = null; //PDTO(Data Transfer Object including Parameters)
-	Exception serverException = null; //서버에서 발생한 에러
-	String strErrMsg = ""; //에러메세지
-	int rowCount = 0; //DB ResultSet 리스트의 건수
+	Exception serverException = null; //Error occurred on the server
+	String strErrMsg = ""; //Error message
+	int rowCount = 0; //DB ResultSet number of list
 
 	String successFlag = "";
 	String codeList = "";
@@ -48,7 +48,7 @@
 					.loadPopupMessage();
 		}
 
-		// 초기화면 로딩시 서버로부터 가져온 데이터 추출하는 로직추가 ..
+		// Added logic to extract data from server when loading initial screen ..
 		GeneralEventResponse eventResponse = (GeneralEventResponse) request
 				.getAttribute("EventResponse");
 		partner = eventResponse.getETCData("partners");
@@ -75,7 +75,7 @@
 <form name="form">
 	<input type="hidden" name="f_cmd"> <input type="hidden"
 		name="pagerows"> <input type="hidden" name="value_partner">
-	<!-- 개발자 작업	-->
+	<!-- Developer work	-->
 	<div class="page_title_area clear">
 		<h2 class="page_title">
 			<button type="button">

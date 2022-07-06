@@ -30,16 +30,20 @@ import com.clt.framework.support.db.SQLExecuter;
 import com.clt.framework.support.layer.integration.DBDAOSupport;
 
 /**
- * ALPS MoneyMgmtDBDAO <br>
+ * ALPS Practice3MgmtDBDAO <br>
  * - JDBC operation to process ALPS-Practice3 system business logic.<br>
  * 
  * @author Dang Hoan Thanh
  * @see See Practice3MgmtBCImpl
  * @since J2EE 1.6
  */
+/**
+ * @author Admin
+ *
+ */
 public class Practice3MgmtDBDAO extends DBDAOSupport{
 	/**
-	 * [searchSummaryVO] to get a list of SummaryMoney.<br>
+	 * [searchSummaryVO] to get a list of Summary.<br>
 	 * 
 	 * @param SummaryVO summaryVO
 	 * @return List<SummaryVO>
@@ -205,7 +209,7 @@ public class Practice3MgmtDBDAO extends DBDAOSupport{
 	}
 	
 	/**
-	 * [searchDetailVO] to get a list of DetailMoney.<br>
+	 * [searchDetailVO] to get a list of Detail.<br>
 	 * 
 	 * @param DetailVO detailVO
 	 * @return List<DetailVO>
@@ -249,7 +253,13 @@ public class Practice3MgmtDBDAO extends DBDAOSupport{
 		}
 		return list;
  	}
-	
+	/**
+	 * [searchDetailsRSForExcel] to get a list of Detail.<br>
+	 * 
+	 * @param DetailVO detailVO
+	 * @return DBRowSet
+	 * @exception DAOException
+	 */
 	public DBRowSet searchDetailsRSForExcel(DetailVO detailVO) throws DAOException {
 		DBRowSet dbRowset = null;
 		//query parameter

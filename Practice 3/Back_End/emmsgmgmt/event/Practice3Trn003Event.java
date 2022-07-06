@@ -23,7 +23,7 @@ import com.clt.framework.support.layer.event.EventSupport;
  * - Used as PDTO delivered to ServiceCommand Layer<br>
  *
  * @author Dang Hoan Thanh
- * @see PRACTICE3_TRN_003HTMLAction 참조
+ * @see PRACTICE3_TRN_003HTMLAction Reference
  * @since J2EE 1.6
  */
 public class Practice3Trn003Event extends EventSupport {

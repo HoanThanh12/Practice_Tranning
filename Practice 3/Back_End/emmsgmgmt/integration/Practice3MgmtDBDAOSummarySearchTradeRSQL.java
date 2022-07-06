@@ -19,7 +19,7 @@ import com.clt.framework.support.db.ISQLTemplate;
 /**
  *
  * @author Dang Hoan Thanh
- * @see DAO 참조
+ * @see DAO Reference
  * @since J2EE 1.6
  */
 
