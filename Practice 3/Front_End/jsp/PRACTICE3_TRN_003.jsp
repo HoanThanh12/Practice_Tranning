@@ -93,7 +93,7 @@
 		</div>
 	</div>
 	<div class="wrap_search">
-		<div class="opus_design_inquiry">
+		<div class="opus_design_inquiry wFit">
 			<table>
 				<tbody>
 					<tr>
@@ -123,11 +123,11 @@
 			<script type="text/javascript">ComTabObject('tab1')</script>
 		</div>
 
-		<div class="opus_design_grid clear" name="tabLayer" id="tabLayer">
+		<div class="opus_design_grid" name="tabLayer" id="tabLayer">
 			<script language="javascript">ComSheetObject('sheet1');</script>
 		</div>
 
-		<div class="opus_design_grid clear" name="tabLayer" id="tabLayer">
+		<div class="opus_design_grid" name="tabLayer" id="tabLayer">
 			<script language="javascript">ComSheetObject('sheet2');</script>
 		</div>
 	</div>

@@ -57,21 +57,21 @@ function processButtonClick() {
 	        	break;
 	        case "btn_datefrom_down":
 	        	addMonth(formObject.acct_yrmon_from, -1);
-	        	yearmonth_onchange();
+	        	yearMonth_OnChange();
 	        	break;
 	        case "btn_datefrom_up":
 	        	addMonth(formObject.acct_yrmon_from, 1);
 	        	excuteCheck();
-	        	yearmonth_onchange();
+	        	yearMonth_OnChange();
 	        	break;
 	        case "btn_dateto_down":
 	        	addMonth(formObject.acct_yrmon_to, -1);
 	        	excuteCheck();
-	        	yearmonth_onchange();
+	        	yearMonth_OnChange();
 	        	break;
 	        case "btn_dateto_up":
 	        	addMonth(formObject.acct_yrmon_to, 1);
-	        	yearmonth_onchange();
+	        	yearMonth_OnChange();
 	        	break;
 	        case "btn_New":
 	        	// Reset sheet
@@ -102,7 +102,7 @@ function loadPage(){
 	for ( var k = 0; k < comboObjects.length; k++) {
 		initCombo(comboObjects[k], k + 1);
 	}
-	// Set yearmonth
+	// Set yearMonth
 	initCalender();
 	s_jo_crr_cd.SetSelectIndex(0);
 	acct_yrmon_from.disabled = true;
@@ -122,6 +122,7 @@ function loadPage(){
 		initSheet(sheetObjects[i], i + 1);
 		ComEndConfigSheet(sheetObjects[i]);
 	}
+	// loadTab Summary
 	doActionIBSheet(sheetObjects[0], document.form, IBSEARCH);
 
 }
@@ -259,7 +260,7 @@ function resizeSheet() {
 	ComResizeSheet(sheetObjects[1]);
 }
 
-/** Set values yearmonth */
+/** Set values yearMonth */
 function initCalender(){
 	var formObject = document.form;
 	initPeriod();
@@ -316,7 +317,7 @@ function excuteCheck(){
 }
 
 /** Handling event after change month of year */
-function yearmonth_onchange(){
+function yearMonth_OnChange(){
 	// Clear data of the Sheet1 - Summary and Sheet2 - Details
 	sheetObjects[0].RemoveAll();
 	sheetObjects[1].RemoveAll();
@@ -434,15 +435,12 @@ function s_jo_crr_cd_OnCheckClick(Index, Code, Checked) {
         var bChk=s_jo_crr_cd.GetItemCheck(Code);
         if (bChk) {
         	s_jo_crr_cd.SetItemCheck(0,false);
-        	s_rlane_cd.SetEnable(true);
-        	getLaneComboData();
         }
     }
 
 	for (var i = 0; i < count; i++){
 		if (s_jo_crr_cd.GetItemCheck(i)){
 			checkSelectCount += 1;
-			getLaneComboData();
 		}	
 	}
 	 if(checkSelectCount == 0) {
@@ -452,6 +450,13 @@ function s_jo_crr_cd_OnCheckClick(Index, Code, Checked) {
      	s_rlane_cd.SetEnable(false);
      	s_trade_cd.SetEnable(false);
 	 }
+}
+
+/** Events when click out on items of combobox Partner */
+function s_jo_crr_cd_OnBlur(){
+	ComOpenWait(true);
+	getLaneComboData();
+	ComOpenWait(false);
 }
 
 /** Handling event when lane combo change */
@@ -491,7 +496,7 @@ function tab1_OnChange(tabObj, nItem)
 		}
 	//------------------------------------------------------//
 	if (nItem==1 && !sheetObjects[1].IsDataModified()){
-			alert("We will load the data in Detail. Because Detail has no data");
+			ComShowCodeMessage('COM132904', sheetObjects[1].id);
 			searchDetails();
 				
 	}
@@ -612,6 +617,8 @@ function sheet2_OnSearchEnd(sheetObj, Code, Msg, StCode, StMsg) {
 		}
 	}
 }
+
+
 
 /** Handling validate */
 function validateForm(sheetObj, formObj, sAction) {
