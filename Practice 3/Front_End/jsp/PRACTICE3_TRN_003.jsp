@@ -76,8 +76,12 @@
 	<input type="hidden" name="f_cmd"> <input type="hidden"
 		name="pagerows"> <input type="hidden" name="value_partner">
 	<!-- Developer work	-->
+	<!-- page_title_area(S) -->
 	<div class="page_title_area clear">
+		<!-- page_title(S) -->
 		<h2 class="page_title">
+		<!-- page_title(E) -->
+		<!-- opus_design_btn(S) -->
 			<button type="button">
 				<span id="title">Invoice</span>
 			</button>
@@ -88,11 +92,18 @@
 			--><button type="button" class="btn_normal" name="btn_DownExcel"id="btn_DownExcel">Down Excel</button><!-- 
 			--><button type="button" class="btn_normal" name="btn_DownExcel2" id="btn_DownExcel2">Down Excel2</button>
 		</div>
+		<!-- opus_design_btn(E) -->
+		<!-- page_location(S) -->
 		<div class="location">
 			<span id="navigation"></span>
 		</div>
+		<!-- page_location(E) -->
 	</div>
+	<!-- page_title_area(E) -->
+	
+	<!-- wrap_search(S) -->
 	<div class="wrap_search">
+		<!-- opus_design_inquiry(S) -->
 		<div class="opus_design_inquiry wFit">
 			<table>
 				<tbody>
@@ -116,20 +127,21 @@
 				</tbody>
 			</table>
 		</div>
+		<!-- opus_design_inquiry(E) -->
 	</div>
+	<!-- wrap_search(E) -->
 
+	<!-- wrap_result(S) -->
 	<div class="wrap_result">
 		<div class="opus_design_tab sm">
 			<script type="text/javascript">ComTabObject('tab1')</script>
 		</div>
-
 		<div class="opus_design_grid" name="tabLayer" id="tabLayer">
 			<script language="javascript">ComSheetObject('sheet1');</script>
-		</div>
-
+		</div>		
 		<div class="opus_design_grid" name="tabLayer" id="tabLayer">
 			<script language="javascript">ComSheetObject('sheet2');</script>
 		</div>
 	</div>
-	<!-- 개발자 작업  끝 -->
+	 <!-- wrap_result(E) -->
 </form>
