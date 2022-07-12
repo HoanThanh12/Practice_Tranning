@@ -119,8 +119,8 @@ public class Practice3MgmtDBDAO extends DBDAOSupport{
 	/**
 	 * [searchLane] to get a list of lane.<br>
 	 * 
-	 * @param SummarySearchLaneVO laneVO
-	 * @return Map<String,String>
+	 * @param SummaryVO laneVO
+	 * @return List<SummaryVO>
 	 * @exception DAOException
 	 */
 	@SuppressWarnings("unchecked")

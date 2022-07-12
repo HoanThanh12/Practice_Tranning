@@ -44,7 +44,7 @@ function processButtonClick() {
 	        case "btn_Retrieve":
 	        	if (!checkOverThreeMonth()){
 	    			if (!checkOK){
-	    				if (confirm("Year Month over 3 months, do you really want to get data?")){
+	    				if (ComShowConfirm("Year Month over 3 months, do you really want to get data?")){
 	    					
 	    	    		}
 	    	    		else{
@@ -506,9 +506,11 @@ function tab1_OnChange(tabObj, nItem)
 } 
 /** Search Details */
 function searchDetails(){
+	ComOpenWait(true);
 	document.form.f_cmd.value = SEARCH03;
 	var xml = sheetObjects[1].GetSearchData("PRACTICE3_TRN_003GS.do", FormQueryString(document.form));
 	sheetObjects[1].LoadSearchData(xml);
+	ComOpenWait(false);
 }
 
 /** Find position info */

@@ -46,7 +46,7 @@ public interface Practice3MgmtBC {
 	 * [searchPartner] to get a list of partner.<br>
 	 * 
 	 * @param
-	 * @return List<SummarySearchPartnerVO>
+	 * @return List<SummaryVO>
 	 * @exception EventException
 	 */
 	public List<SummaryVO> searchPartner() 

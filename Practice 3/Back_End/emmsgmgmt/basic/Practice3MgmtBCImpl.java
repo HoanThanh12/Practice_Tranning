@@ -76,7 +76,7 @@ public class Practice3MgmtBCImpl extends BasicCommandSupport implements Practice
 	 * [searchPartner] to get a list of partner.<br>
 	 * 
 	 * @param 
-	 * @return List<SummarySearchPartnerVO>
+	 * @return List<SummaryVO>
 	 * @exception EventException
 	 */
 	public List<SummaryVO> searchPartner() 
@@ -93,7 +93,7 @@ public class Practice3MgmtBCImpl extends BasicCommandSupport implements Practice
 	/**
 	 * [searchLane] to get a list of lane.<br>
 	 * 
-	 * @param SummarySearchLaneVO	laneVO
+	 * @param SummaryVO	laneVO
 	 * @return Map<String, String>
 	 * @exception EventException
 	 */
